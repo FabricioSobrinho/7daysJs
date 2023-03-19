@@ -1,0 +1,66 @@
+<!DOCTYPE html> 
+<html lang="pr-BR">
+    <head>
+        <meta charset="utf-8">
+        <title>Day2</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,700;0,800;0,900;1,100&family=Paytone+One&family=Roboto:wght@400;700&family=Tilt+Neon&display=swap');
+
+            body {
+                display: flex;
+                margin: 0;
+                padding: 0;
+                font-family: "Noto Sans";
+                background: #0c0c64;
+                height: 100vh;
+                width: 100vw;
+                align-items: center;
+                justify-content: center;
+            }
+            .main {
+                display: flex;
+                height: 30%;
+                width: 40%;
+                background-color: #200b65;
+                align-items: center;
+                justify-content: center;
+                border-radius: 5px;
+                box-shadow: 2px 2px 90px black;
+                color: white;
+            }
+            .res {
+                height: 50%;
+                width: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="main">
+        <div id="res">
+            
+        </div>
+        </div>
+        <script>
+            let nome = window.prompt("Insira seu nome")
+            while (nome == null) {
+                let name = window.prompt("Insira seu nome.")
+            if (name != null) { // laço para evitar que  pessoa deixe o campo vazio
+                nome = name //se o campo não ficar nulo a varivel condicional do laço recebe um valor que permite o fim do loop
+            } 
+        } 
+           let idade = Number(window.prompt("Insira sua idade."))
+           while (idade < 0 || idade == 0 || isNaN(idade) == true) { //função isNaN retorna true ou false para o tipo de texto, se for um numero o loop n ocorre, se forem letras há o loop
+            let age = window.prompt("Insira sua idade corretamente")
+            if (age != null || age > 0 || isNaN(idade) == true) {
+                idade = age 
+            } 
+        }
+           let altura = Number(window.prompt("Insira sua altura"))
+           let res = window.document.getElementById("res")
+           res.innerHTML = `Olá, ${nome}, você tem ${idade} anos e ${altura}m`
+        </script>
+    </body>
+</html>

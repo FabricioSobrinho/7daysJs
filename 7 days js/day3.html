@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day3</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,700;0,800;0,900;1,100&family=Paytone+One&family=Roboto:wght@400;700&family=Tilt+Neon&display=swap');
+
+        body {
+            display: flex;
+            margin: 0;
+            padding: 0;
+            font-family: "Noto Sans";
+            background: #0c0c64;
+            height: 100vh;
+            width: 100vw;
+            align-items: center;
+            justify-content: center;
+        }
+        .main {
+            display: flex;
+            flex-direction: column;
+            height: 30%;
+            width: auto;
+            background-color: #200b65;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            box-shadow: 2px 2px 90px black;
+            color: white;
+            padding: 30px;
+        }
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px;
+        }
+        .btn > input{
+            background: #2a2a6c;
+            color: white;
+            width: 230px;
+            height: 40px;
+            text-align: center;
+            padding: 5px;
+            border-radius: 5px;
+            border: none;
+            margin-left: 5px;
+            box-shadow: 1px 1px 10px rgb(0, 0, 0);
+            cursor: pointer;
+        }
+        .tec { 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body> 
+    <div class="main">
+     Você quer se tornar um Dev full stack?
+     <div class="btn">
+    <input type="button" value="quero" onclick="quer()" class="btn1"> 
+    <input type="button" value="Não, quero seguir em minha area" onclick="nquer()">
+    </div>
+    <div id="tec"></div>
+    </div>
+    <script>
+        var p1 = window.prompt("Você prefere front ou back end?")
+        let pref = ''
+        if (p1 == "backend" || p1 == "Backend" || p1 == "back" || p1 == "Back" ) {
+            pref = "backend"
+            let p2 = window.prompt("Você gostaria de aprender C# ou Java?")
+            while (p2 != "C#" && p2 != "Java") { // se o valor de p2 n for nem C# e nem Java o loop é aceso, por isso o conectivo &
+                let pgt = prompt("Por favor, escolha entre Java e C#")
+                p2 = pgt 
+            } } else if (p1 == "frontend" || p1 == "Frontend" || p1 == "front" || p1 == "Front") {
+            let p3 = window.prompt("Você gostaria de aprender Vue ou Rect Js?")
+            while (p3 != "Vue" && p3 != "React Js") {
+                let pgt = prompt("Por favor, escolha entre Vue e React Js")
+                p3 = pgt 
+            } pref = "frontend"
+            } else {
+             alert("Por favor, escolha front ou back end.")
+             window.location.reload(true)
+        }
+        function quer() {
+            let tec = document.getElementById("tec")
+            var all = []
+            for (let n = 0; n <= all.length; n++) {
+                var list = window.prompt(`Quais tecnologias você quer aprender para se tornar dev Fullstack?`)
+                all.push(list)
+                if (list == null) {
+                    n = all.length += 1 // em caso de finalização da lista o valor de n fica maior que o numero de elementos e o loop é finalizado 
+                    all.pop() 
+                }
+        } 
+        const valor = all.join(" ") // exibe os valores do vetor sem as virgulas entre eles
+        tec.innerHTML = `As tecnologias que você deseja aprender são: <br> <strong> ${valor} </strong>`
+        }  
+        function nquer() {
+            let tec2 = document.getElementById("tec")
+            var all2 = []
+            for (let n2 = 0; n2 <= all2.length; n2++) {
+                var list2 = window.prompt(`Quais tecnologias você quer aprender como dev ${pref}?`)
+                all2.push(list2)
+                if (list2 == null) {
+                    n2 = all2.length += 1
+                    all2.pop() 
+                } }   const valor2 = all2.join(" ")
+            tec2.innerHTML = `As tecnologias que você deseja aprender são: <br> <strong> ${valor2} </strong>`
+    }
+    </script>
+</body>
+</html>

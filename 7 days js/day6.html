@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day6</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,700;0,800;0,900;1,100&family=Paytone+One&family=Roboto:wght@400;700&family=Tilt+Neon&display=swap');
+
+       body {
+           background: #0c0c64;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           height: 100vh;
+           width: 100vw;
+           padding: 0;
+           margin: 0;
+           font-family: 'Noto Sans';
+       }
+       .main {
+           display: flex;
+           flex-direction: column;
+           height: auto;
+           width: auto;
+           padding: 10px;
+           background-color: #200b65;
+           align-items: center;
+           justify-content: center;
+           padding: 40px;
+           border-radius: 5px;
+           box-shadow: 2px 2px 90px black;
+       }
+       .form {
+           color: white;
+           padding: 3px;
+           display: flex;
+           flex-direction: column;
+           align-items: center;
+           justify-content: center;
+       }
+       .form > p {
+           margin: 0;
+       }
+       .form > input {
+           background: transparent;
+           border: none;
+           outline: none;
+           border-bottom: 2px solid blue;
+           margin-bottom: 8px;
+           color: white;
+       }
+       .form ::placeholder {
+           color: #b6ccff;
+       }
+       .form > button {
+           height: 30px;
+           width: 100px;
+           padding: 5px;
+           margin-bottom: 10px;
+           margin-top: 5px;
+           background: #3030a8;
+           border: none;
+           color: white;
+           cursor: pointer;
+       }
+       .ratio {
+           display: flex;
+           align-items: center; 
+       }
+
+       .ratio > input[type="radio"] {
+       -webkit-appearance: none;
+       -moz-appearance: none;
+       appearance: none;
+       width: 20px;
+       height: 20px;
+       border-radius: 2px !important;
+       border: 2px solid #02034d;
+       outline: none;
+       }
+       .ratio > input[type="radio"]:checked {
+       background-color: #536aff;
+       }
+       .ratio > label {
+       color: white;
+       font-size: 16px;
+       margin-left: 4px;
+       margin-top: 3px;
+       margin-right: 4px;
+       }
+       .remover {
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items:center;
+        justify-content: center;
+       }
+       .remover > button {
+        background-color: #3030a8;
+        width: 90px;
+        height: 40px;
+        border: none;
+        outline: none;
+        margin-top: 15px;
+        color: white;
+        cursor: pointer;
+
+       }
+       .remover > input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        } 
+        .remover > input {
+            background: transparent;
+           border: none;
+           outline: none;
+           border-bottom: 2px solid blue;
+           margin-bottom: 8px;
+           color: white;
+        }
+        .remover > input::placeholder {
+            color: #b6ccff;
+        }
+       .res {
+           color: white;
+           margin-top: 10px
+       }
+   </style>
+</head>
+<body>
+    <div class="main">
+        <div class="form"> 
+       <p> Insira os alimentos que você quer comprar:</p> <br><input type="text" placeholder="Insira os alimentos" name="ali" id="alimentos"> <button onclick="adicionar()">Adicionar</button>
+       
+        </div>
+        <div class="ratio">
+        <input type="radio" name="categoria" id="catlat" checked> 
+        <label for="catlat">Laticínio</label>
+        <input type="radio" name="categoria" id="catfrut">
+        <label for="catfrut">Fruta</label>
+        <input type="radio" name="categoria" id="catcar"> 
+        <label for="catcar">Carne</label>
+        <input type="radio" name="categoria" id="catdoc"> 
+        <label for="catdoc">Doce</label>   
+         </div>
+         <div class="remover">
+            <input type="number" name="remove" id="remove" placeholder="Insira a posiçao do elemento" min="0"> <button onclick="remove()">Remover elemento</button>
+         </div>
+    
+    <div class="res">
+        <p id="listalat"></p>
+        <p id="listafrut"></p>
+        <p id="listacar"></p>
+        <p id="listadoc"></p>
+    </div>
+</div>
+
+
+    <script>
+        var gal = document.getElementById("alimentos")
+        let cat = document.getElementsByName("categoria")
+        let listalat = document.getElementById("listalat")
+        let listafrut = document.getElementById("listafrut")
+        let listacar = document.getElementById("listacar")
+        let listadoc = document.getElementById("listadoc")
+
+        let lat = []
+        let car = [] 
+        let frut = []
+        let doce = []
+        
+        function adicionar() {
+            if (gal.value.length == 0) {
+                alert("Insira o nome dos alimentos, por favor")
+            } else {
+        if (cat[0].checked) {
+            lat.push(gal.value)
+            listalat.innerHTML = `<strong> Laticínios </strong>: ${lat}` 
+        } else if (cat[1].checked) {
+            frut.push(gal.value)
+            listafrut.innerHTML = `<strong> Frutas </strong>: ${frut}` 
+        } else if (cat[2].checked) {
+            car.push(gal.value)
+            listacar.innerHTML = `<strong> Carnes </strong>: ${car}` 
+        } else if (cat[3].checked) {
+            doce.push(gal.value)
+            listadoc.innerHTML = `<strong> Doces </strong>: ${doce}` 
+        }
+        gal.value = ''
+        gal.focus()
+    }
+        }
+    function remove() {
+        let pos = document.getElementById("remove")
+        let posicao = Number(pos.value)
+        console.log(posicao -= 1)
+        if (pos.value.length == 0) {
+            alert("Insira a posição do elemento a ser removido, por favor")
+        } else {
+        if (cat[0].checked) {
+            lat.splice(posicao, 1)
+            listalat.innerHTML = `<strong> Laticínios </strong>: ${lat}`
+        } else if (cat[1].checked) {
+            frut.splice(posicao, 1)
+            listafrut.innerHTML = `<strong> Frutas </strong>: ${frut}`
+        } else if (cat[2].checked) {
+            car.splice(posicao, 1)
+            listacar.innerHTML = `<strong> Carnes </strong>: ${car}`
+        } else if (cat[3].checked) {
+            doce.splice(posicao, 1)
+            listadoc.innerHTML = `<strong> Doces </strong>: ${doce}`
+        }
+    } 
+}
+   
+</script>
+</body>
+</html>
