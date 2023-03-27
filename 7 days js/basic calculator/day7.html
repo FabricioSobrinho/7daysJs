@@ -144,11 +144,7 @@
         let num1 = Number(numero1.value)
         let num2 = Number(numero2.value)
         simb = "-"
-        if (num1 < 0 && num2 < 0) {
-            res.innerHTML = `<p>${num1}${simb}${num2} <p>=</p> <p> <strong> ${num1 + num2} </strong> </p> `
-        } else {
-            res.innerHTML = `<p>${num1}${simb}${num2} <p>=</p> <p> <strong> ${num1 - num2} </strong> </p> `
-        }
+        res.innerHTML = `<p>${num1}${simb}${num2} <p>=</p> <p> <strong> ${num1 - num2} </strong> </p> `
         }
         function vezes() {
         let num1 = Number(numero1.value)
